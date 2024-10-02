@@ -1,38 +1,192 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #1a1a1a;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden; /* Prevent scrollbars when sidebar is open */
+}
+
+main {
+  flex: 1;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  transition: margin-right 0.3s ease-in-out; /* Add this line */
+}
+
+.metaballs-container {
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 50%;
+}
+
+.light-mode .metaballs-container {
+  background-color: white;
+}
+
+.dark-mode .metaballs-container {
+  background-color: #222;
+}
+
+.sidebar {
+  width: 300px;
+  background-color: #efefef;
+  padding: 20px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar-closed .sidebar {
+  transform: translateX(100%);
+}
+
+.sidebar-closed main {
+  margin-right: 0;
+}
+
+.sidebar-open main {
+  margin-right: 300px;
+}
+
+.toggle-sidebar {
+  position: absolute;
+  top: 10px;
+  left: -30px;
+  width: 30px;
+  height: 30px;
+  background-color: #f0f0f0;
+  border: none;
+  cursor: pointer;
+}
+
+/* Ensure the Metaballs component fits within the main area */
+main canvas {
+  width: 100%;
+  height: 100%;
+}
+
+
+/* ... (previous CSS remains unchanged) ... */
+
+.control {
+  margin-bottom: 20px;
+}
+
+.control label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.control input {
+  width: 100%;
+}
+
+/* ... (new styles added) */
+
+.App {
+  display: flex;
+  height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+
+.light-mode {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.dark-mode {
+  background-color: #333;
+  color: #f0f0f0;
+}
+
+.light-mode .metaballs-container {
+  background-color: white;
+}
+
+.dark-mode .metaballs-container {
+  background-color: #222;
+}
+
+.light-mode .sidebar, .light-mode .toggle-sidebar {
+  background-color: #3d3d3d;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.dark-mode .sidebar, .dark-mode .toggle-sidebar{
+  background-color: #efefef;
+  color: #3d3d3d;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.mode-label {
+  margin-left: 10px;
+  vertical-align: super;
+}
+
+/* Adjust input range styles for dark mode */
+.dark-mode input[type="range"] {
+  background: #555;
+}
+
+.dark-mode input[type="range"]::-webkit-slider-thumb {
+  background: #3498db;
+}
+
+.dark-mode input[type="range"]::-moz-range-thumb {
+  background: #3498db;
 }
