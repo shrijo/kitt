@@ -1,0 +1,8 @@
+.metaballs {
+    filter: contrast(100);
+    -webkit-filter: contrast(100);
+    -moz-filter: contrast(100);
+    -ms-filter: contrast(100);
+    -o-filter: contrast(100);
+    filter: contrast(100);
+}
