@@ -123,7 +123,7 @@ const Metaballs: React.FC<MetaballsProps> = ({ size, blobCount, maxRadius, blobS
           if (sum > threshold) {
             const gradientFactor = y / size;
             const alphaOpacity = isDarkMode
-              ? 0.1 + gradientFactor * 0.7
+              ? 0.2 + gradientFactor * 0.7
               : 0.8 - gradientFactor * 0.7;
             data[index] = isDarkMode ? 255 : 0;     // R
             data[index + 1] = isDarkMode ? 255 : 0; // G
@@ -140,7 +140,7 @@ const Metaballs: React.FC<MetaballsProps> = ({ size, blobCount, maxRadius, blobS
     animate();
   }, [size, blobCount, maxRadius, blobSize, speed, minSpeed, isDarkMode, opacity]);
 
-  return <canvas ref={canvasRef} width={size} height={size} />;
+  return <canvas ref={canvasRef} width={size} height={size} className='metaballs'/>;
 };
 
 export default Metaballs;

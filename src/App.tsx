@@ -4,7 +4,7 @@ import Metaballs from './components/Metaballs';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [metaballsSize, setMetaballsSize] = useState(300);
+  const [metaballsSize, setMetaballsSize] = useState(100);
   const [blobSizePercent, setBlobSizePercent] = useState(15);
   const [speed, setSpeed] = useState(2);
   const [minSpeed, setMinSpeed] = useState(0.5);
